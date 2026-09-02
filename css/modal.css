@@ -1,0 +1,256 @@
+/* ==========================================================================
+   MODAL & FORM STYLES
+   ========================================================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.modal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-sm {
+    max-width: 420px;
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.btn-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* Modal Form */
+.modal-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.required {
+    color: var(--priority-urgent);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.65rem 0.85rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Subtask Form Controls */
+.subtask-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subtask-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.subtasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.subtask-item-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.4rem 0.65rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.subtask-checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
+}
+
+.subtask-input-text {
+    flex: 1;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: 0.825rem !important;
+}
+
+.subtask-input-text:focus {
+    box-shadow: none !important;
+}
+
+.subtask-input-text.completed {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.btn-remove-subtask {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-remove-subtask:hover {
+    color: var(--priority-urgent);
+}
+
+.add-subtask-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.add-subtask-row input {
+    flex: 1;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger {
+    background: var(--priority-urgent);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
